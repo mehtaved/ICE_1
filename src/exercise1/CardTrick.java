@@ -8,6 +8,7 @@ package exercise1;
  * @author dancye
  * @author Paul Bonenfant Jan 25, 2022 
  */
+import java.util.Scanner;
 public class CardTrick {
     
     public static void main(String[] args) {
@@ -16,6 +17,10 @@ public class CardTrick {
 
         for (int i = 0; i < hand.length; i++) {
             Card card = new Card();
+            card.setValue((int)(1+Math.random()*13)); 
+            card.setSuit(Card.SUITS[(int)(Math.random()*3)]);
+            hand[i]=card;
+            System.out.println(hand[i].getSuit() + " " + hand[i].getValue());
             //card.setValue(insert call to random number generator here)
             // 
             //card.setSuit(Card.SUITS[insert call to random number between 0-3 here])
@@ -23,6 +28,20 @@ public class CardTrick {
             //       Don't worry about duplicates at this point
         }
 
+         Scanner sc = new Scanner(System.in);
+         System.out.print("Enter Suits:");
+         String usuit = sc.nextLine();
+         System.out.print("Enter Value:");
+         int uvalue = sc.nextInt();
+         
+         for(int i = 0; i < hand.length; i++)
+         {
+           if(usuit.equalsIgnoreCase(hand[i].getSuit()) && uvalue==hand[i].getValue());
+           {
+             printInfo();
+             break;
+           }
+         }
         // insert code to ask the user for Card value and suit, create their card
         // and search the hand here. 
         // Hint: You can ask for values 1 to 10, and then
